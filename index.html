@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Admissions</title>
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+  <h1>Admission Records</h1>
+
+  <button hx-get="{% url 'create_student' %}" hx-target="#form-modal" hx-swap="innerHTML">+ Add Student</button>
+
+  <table border="1">
+    <tr><th>Name</th><th>Age</th><th>Grade</th><th>Guardian</th><th>Contact</th><th>Actions</th></tr>
+    <tbody id="student-table">
+      {% for student in students %}
+        {% include 'admissions/partials/student_row.html' %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div id="form-modal"></div>
+</body>
+</html>
